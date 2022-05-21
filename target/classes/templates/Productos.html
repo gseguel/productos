@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="h-100">
+
+<head>
+	<meta charset="utf-8">
+	<!--JQUERY-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- FRAMEWORK BOOTSTRAP -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+
+	<!--Fontawesome icons-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
+
+	<!--data table -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+	<script src="https://cdn.datatables.net/plug-ins/1.10.21/dataRender/datetime.js"></script>
+
+	<!--sweet alert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script type="text/javascript" th:src="@{/js/productos.js}"></script>
+</head>
+
+<body>
+	<main layout:fragment="content" style="padding-top: 75px; width: 100%;">
+
+		<div class="container">
+
+			<div class="row" style="padding-left: 15px; padding-right: 15px;">
+				<h2>Products</h2>
+			</div>
+
+			<!--	          <div class="row" style="padding-left: 15px; padding-right: 15px;text-align: right;">-->
+			<!--				  <p class="lead" style="margin-bottom: 35px;">-->
+			<!--				    <a role="button" data-toggle="modal" class="btn-primary btn" data-target="#modalCotizacion" onclick="openModalCotizacion()" style="margin-left: 5px;"><i class="far fa-plus-square"></i> <span>Crear Cotización</span></a>	-->
+			<!--				  </p>          	-->
+			<!--	          </div>-->
+
+
+			<div class="bs-component">
+
+				<table id="tableProducts" class="table table-hover compact">
+					<thead>
+						<tr>
+							<th scope="col">sku</th>
+							<th scope="col">name</th>
+							<th scope="col">brand</th>
+							<th scope="col">size</th>
+							<th scope="col">price</th>
+							<th scope="col">Principal Image</th>
+							<th scope="col">Other images</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+
+
+			</div>
+
+
+		</div>
+
+		<div id="loader" class="lds-dual-ring hidden overlay"></div>
+	</main>
+</body>
+
+</html>
