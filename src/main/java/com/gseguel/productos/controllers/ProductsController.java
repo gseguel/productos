@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.gseguel.productos.model.Mensaje;
 import com.gseguel.productos.model.Product;
 import com.gseguel.productos.services.ProductsService;
 
@@ -31,12 +30,12 @@ public class ProductsController {
 
 	@PostMapping(value = "/save")
     @Transactional
-	ResponseEntity<Product> saveProduct(@RequestBody Product product){
+	ResponseEntity<Mensaje> saveProduct(@RequestBody Product product){
 		if(product == null) {
 			return ResponseEntity.unprocessableEntity().build();
 		}
 		this.service.save(product);
-		return new ResponseEntity<>(product, HttpStatus.CREATED);
+		return new ResponseEntity<>(new Mensaje("Datos Guardados","El producto ha sido guardado correctamente"), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update")
@@ -51,12 +50,12 @@ public class ProductsController {
 	
     @DeleteMapping(value = "/delete/{sku}")
     @Transactional
-    ResponseEntity<Product> deleteProduct(@PathVariable("sku") String sku) {
+    ResponseEntity<Mensaje> deleteProduct(@PathVariable("sku") String sku) {
         if (sku == null) {
             return ResponseEntity.unprocessableEntity().build();
         }
         this.service.delete(sku);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(new Mensaje("Datos Eliminados","El producto ha sido eliminado correctamente"), HttpStatus.ACCEPTED);
     }
     
     @GetMapping(value = "/listProducts")

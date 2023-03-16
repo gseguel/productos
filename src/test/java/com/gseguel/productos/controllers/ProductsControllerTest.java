@@ -14,6 +14,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.gseguel.productos.model.Mensaje;
 import com.gseguel.productos.model.Product;
 import com.gseguel.productos.repository.ProductsMapper;
 import com.gseguel.productos.services.ProductsService;
@@ -51,7 +52,7 @@ class ProductsControllerTest {
         when(productMapper.save(product)).thenReturn(1);
         when(productService.save(product)).thenReturn(product);
 
-        ResponseEntity<Product> productCreated = controller.saveProduct(product);
+        ResponseEntity<Mensaje> productCreated = controller.saveProduct(product);
         assertEquals(productCreated.getStatusCode(), HttpStatus.CREATED);
 
     }
@@ -76,7 +77,7 @@ class ProductsControllerTest {
         when(productMapper.delete(skuDelete)).thenReturn(1);
         when(productService.delete(skuDelete)).thenReturn(skuDelete);
 
-        ResponseEntity<Product> productDelete = controller.deleteProduct(skuDelete);
+        ResponseEntity<Mensaje> productDelete = controller.deleteProduct(skuDelete);
         assertEquals(productDelete.getStatusCode(), HttpStatus.ACCEPTED);
     }
 
